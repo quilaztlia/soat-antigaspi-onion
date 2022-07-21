@@ -1,0 +1,7 @@
+
+  dotnet new webapi -minimal -n WebApiName
+  dotnet dev-certs https --trust
+  
+  dotnet build
+  dotnet run
+  https://localhost:7288/swagger/index.html
