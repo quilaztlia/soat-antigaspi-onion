@@ -1,3 +1,5 @@
+DOJO notes on OneDrive: https://bityl.co/DOMR
+====================================================
 
   dotnet new webapi -minimal -n WebApiName
   dotnet dev-certs https --trust
