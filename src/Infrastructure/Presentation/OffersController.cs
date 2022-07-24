@@ -3,13 +3,18 @@
 namespace Presentation
 {
     [ApiController]
-    [Route("api/[]")]
-    public class OffersController
+    //[Route("api/[]")]
+    [Route("api/offers")]
+    public class OffersController : ControllerBase
     {
         public OffersController()
         {            
         }
 
-        //[HttpGet]
+        [HttpGet]
+        public ActionResult HealtCheck()
+        {
+            return Ok("HealtCheck"); //Results.();
+        }
     }
 }

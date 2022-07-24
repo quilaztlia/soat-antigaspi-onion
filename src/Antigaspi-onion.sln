@@ -19,11 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence.Tsql", "Infrast
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Presentation.Rest", "Infrastructure\Presentation\Presentation.Rest.csproj", "{4D04B80A-D9EB-43AC-9CA5-BC5FF4000042}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{55E5F615-579A-4D16-A7F7-BE67666454C5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Antigaspi.Web", "Web\Antigaspi.Web.csproj", "{55E5F615-579A-4D16-A7F7-BE67666454C5}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication", "Infrastructure\Communication\Communication.csproj", "{E5F6CFC0-2082-4058-8E7C-9D7487C7AD47}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Persistance.Dynamo", "Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj", "{FC459942-2A0C-490C-8F27-B7C2352E7BF5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance.Dynamo", "Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj", "{FC459942-2A0C-490C-8F27-B7C2352E7BF5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
