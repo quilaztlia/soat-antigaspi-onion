@@ -1,4 +1,4 @@
-﻿namespace Domain.IRepository
+﻿namespace Domain.Repository.Abstractions
 {
     public interface IUnitOfWork
     {

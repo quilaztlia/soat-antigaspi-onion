@@ -1,6 +1,6 @@
 ﻿using Services.Abstractions;
 
-namespace Domain
+namespace Domain.Services
 {
     //CHECK: internam & sealed
     internal sealed class ContactService : IContactService
