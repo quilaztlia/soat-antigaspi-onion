@@ -7,11 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Services.Abstractions\Services.Abstractions.csproj" />
+    <ProjectReference Include="..\Infrastructure\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj" />
     <ProjectReference Include="..\Infrastructure\Presentation\Presentation.Rest.csproj" />
   </ItemGroup>
