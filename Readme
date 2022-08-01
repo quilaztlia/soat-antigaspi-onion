@@ -1,8 +1,4 @@
 ====================================================
-DOJO notes on OneDrive: https://bityl.co/DOMR
-====================================================
-Wifi Soat: L1GHTSAB3R
-
   dotnet new webapi -minimal -n WebApiName
   dotnet dev-certs https --trust
   
