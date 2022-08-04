@@ -8,7 +8,7 @@ using Services.Abstractions;
 var webApplication = WebApplication.CreateBuilder(args);
 
 // Add services to the container
-webApplication.Services.AddTransient<ExceptionHandlingMiddleware>();
+webApplication.Services.AddTransient<CustomExceptionHandlerMiddleware>();
 
 webApplication.Services.AddControllers()
                        .AddApplicationPart(typeof(Presentation.Rest.AssemblyReference).Assembly); ;
@@ -31,8 +31,10 @@ var swaggerInfo = new OpenApiInfo
 webApplication.Services.AddSwaggerGen(
         swagger => swagger.SwaggerDoc("v1", swaggerInfo ));
 
-
 var app = webApplication.Build();
+
+//CHECK : ExceptionHandlerMiddleware ??
+app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

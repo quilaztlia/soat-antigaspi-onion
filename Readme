@@ -14,9 +14,13 @@ ANTI-GASPI-ONION
 	QUESTIONS
 ====================================================
 **Request Pipeline
+**HttpContextReques !!
+** Request Handling Method
 ** Program , Startup
 ** Singleton, scoped, Transient (Session, Cache, )
 ** Microsoft.AspNetCore.Mvc.ApplicationParts
+** Microsoft.AspNetCore.Diagnostics = ExceptionHandlerMiddleware 
+
 
 * Microsoft.AspNetCore.Mvc.Core  => MVC? name of the pattern ?
 *internal
