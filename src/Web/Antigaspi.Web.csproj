@@ -7,12 +7,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.3.64" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Core\Services.Abstractions\Services.Abstractions.csproj" />
+    <ProjectReference Include="..\Core\Services\Services.csproj" />
     <ProjectReference Include="..\Infrastructure\LoggerService\LoggerService.csproj" />
     <ProjectReference Include="..\Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj" />
     <ProjectReference Include="..\Infrastructure\Presentation\Presentation.Rest.csproj" />

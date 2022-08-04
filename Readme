@@ -1,7 +1,6 @@
 ====================================================
-DOJO notes on OneDrive: https://bityl.co/DOMR
+ANTI-GASPI-ONION
 ====================================================
-Wifi Soat: L1GHTSAB3R
 
   dotnet new webapi -minimal -n WebApiName
   dotnet dev-certs https --trust
@@ -9,3 +8,46 @@ Wifi Soat: L1GHTSAB3R
   dotnet build
   dotnet run
   https://localhost:7288/swagger/index.html
+
+
+====================================================
+	QUESTIONS
+====================================================
+**Request Pipeline
+** Program , Startup
+** Singleton, scoped, Transient (Session, Cache, )
+** Microsoft.AspNetCore.Mvc.ApplicationParts
+
+* Microsoft.AspNetCore.Mvc.Core  => MVC? name of the pattern ?
+*internal
+*Lazy
+*Request
+*CancellationToken
+*?Injection to Controllers?
+
+====================================================
+	LINKS
+====================================================
+https://code-maze.com/onion-architecture-in-aspnetcore/
+https://herbertograca.com/2017/09/21/onion-architecture/
+https://jeffreypalermo.com/2008/08/the-onion-architecture-part-3/
+
+*https://jeffreypalermo.com/2013/07/onion-architecture-for-distributed-systems-at-austin-code-camp-2013/
+
+**Volosoft: ABP
+
+PRACTICE
+====================================================
+C#: http://www.castleproject.org/container/index.html 
+	Spring Project
+	IoC
+
+Chapcas	
+https://www.youtube.com/Elfocrash 
+https://en.wikipedia.org/wiki/Dependency_inversion_principle
+https://en.wikipedia.org/wiki/Inversion_of_control
+
+	
+https://github.com/cstrahan/codecampserver
+
+?? https://martinfowler.com/articles/injection.html

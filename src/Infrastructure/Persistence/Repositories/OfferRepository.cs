@@ -1,4 +1,6 @@
-﻿using Domain.Repository.Abstractions;
+﻿using Domain.Entities;
+using Domain.Repository.Abstractions;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +11,16 @@ namespace Persistence.Repositories
 {
     internal sealed class OfferRepository : IOfferRepository
     {
-        private readonly RepositoryDbContext _dbContext;
+        private readonly ApplicationDbContext _appDbContext;
 
         //CHECK: Not an Interface ?
-        public OfferRepository(RepositoryDbContext dbContext)
+        public OfferRepository(ApplicationDbContext dbContext)
         {
-            _dbContext = dbContext;
+            _appDbContext = dbContext;
         }
+
+        //CHECK: Include, ToList
+        protected async Task<IReadOnlyCollection<Offer>> GetAllAsync(CancellationToken cancellationToken = default) =>
+            await _appDbContext.Offers.ToListAsync(cancellationToken);
     }
 }

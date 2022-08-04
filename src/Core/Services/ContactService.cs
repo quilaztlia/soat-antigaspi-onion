@@ -1,10 +1,17 @@
-﻿using Services.Abstractions;
+﻿using Contracts;
+using Services.Abstractions;
 
 namespace Domain.Services
 {
     //CHECK: internam & sealed
-    internal sealed class ContactService : IContactService
+    public sealed class ContactService : IContactService
     {
-
+        //public ContactService()
+        //{
+        //}
+        public async Task<ContactDto> GetContact(Guid idContact)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

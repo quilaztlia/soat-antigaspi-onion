@@ -4,9 +4,9 @@ namespace Persistence.Repositories
 {
     internal sealed class ContactRepository : IContactRepository
     {
-        private readonly RepositoryDbContext _dbContext;
+        private readonly ApplicationDbContext _dbContext;
 
-        public ContactRepository(RepositoryDbContext dbContext)
+        public ContactRepository(ApplicationDbContext dbContext)
         {
             _dbContext = dbContext;
         }

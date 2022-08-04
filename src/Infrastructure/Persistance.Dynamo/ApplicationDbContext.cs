@@ -3,7 +3,7 @@
 
 namespace Persistence.Dynamo
 {
-    public class RepositoryDbContext //: DbContext
+    public class ApplicationDbContext //: DbContext
     {
         /*
         public RepositoryDbContext(DbContextOptions contextOptions)

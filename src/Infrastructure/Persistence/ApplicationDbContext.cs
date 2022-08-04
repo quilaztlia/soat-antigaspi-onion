@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence
 {
-    public class RepositoryDbContext : DbContext
+    public class ApplicationDbContext : DbContext
     {
-        public RepositoryDbContext(DbContextOptions contextOptions)
+        public ApplicationDbContext(DbContextOptions contextOptions)
             : base(contextOptions)
         {
         }
@@ -16,7 +16,7 @@ namespace Persistence
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(RepositoryDbContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
         }        
     }
 

@@ -1,22 +1,23 @@
-using Microsoft.OpenApi.Models;
-using Services.Abstractions;
-using Domain.Services;
+using Antigaspi.Web.Middleware;
 using Domain.Repository.Abstractions;
+using Domain.Services;
+using Microsoft.OpenApi.Models;
 using Persistance.Dynamo;
+using Services.Abstractions;
 
 var webApplication = WebApplication.CreateBuilder(args);
 
 // Add services to the container
+webApplication.Services.AddTransient<ExceptionHandlingMiddleware>();
+
 webApplication.Services.AddControllers()
-                       .AddApplicationPart(typeof(Presentation.AssemblyReference).Assembly);
+                       .AddApplicationPart(typeof(Presentation.Rest.AssemblyReference).Assembly); ;
 
 webApplication.Services.AddScoped<IServiceManager, ServiceManager>();
 
 webApplication.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
 //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
-
-//webApplication.Services.AddTransient<ExceptionHandlingMiddleware>();
 
 // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 webApplication.Services.AddEndpointsApiExplorer();
