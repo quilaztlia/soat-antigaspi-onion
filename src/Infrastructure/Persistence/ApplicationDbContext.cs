@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Persistence.Tsql
 {
-    public class ApplicationDbContext : DbContext
+    public sealed class ApplicationDbContext : DbContext
     {
         public ApplicationDbContext(DbContextOptions contextOptions)
             : base(contextOptions)

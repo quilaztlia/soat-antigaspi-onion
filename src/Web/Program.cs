@@ -1,7 +1,10 @@
+using Antigaspi.Web.Extensions;
 using Antigaspi.Web.Middleware;
 using Domain.Repository.Abstractions;
 using Domain.Services;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Persistence.Tsql;
 using Services.Abstractions;
@@ -24,7 +27,25 @@ namespace Soat.Antigaspi.Web
 
             webApplication.Services.AddScoped<IRepositoryManager, RepositoryManager>();
 
+            webApplication.Services.AddDbContextPool<ApplicationDbContext>(
+                builder => {
+                    var connectionString = webApplication.Configuration.GetConnectionString("AntigaspiDB");
+                    builder.UseSqlServer(connectionString);
+                });
             //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
+            
+            // CHECK : Cors ExtensionMethod
+            webApplication.Services.AddCors(
+                options => 
+                {
+                    options.AddPolicy("CorsPolicy",
+                            webAppBuilde => webAppBuilde.AllowAnyOrigin()
+                                .AllowAnyMethod()
+                                .AllowAnyHeader());
+                });
+
+            // IISConfig in ExtensionMethod
+            webApplication.Services.ConfigureIISIntegration();
 
             // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             webApplication.Services.AddEndpointsApiExplorer();
@@ -32,21 +53,20 @@ namespace Soat.Antigaspi.Web
             var swaggerDocName = "Antigaspi.Web";
             var swaggerInfo = new OpenApiInfo
             {
-                Title = "swaggerDocName",
+                Title = swaggerDocName,
                 Version = "1.0.0"
             };
             webApplication.Services.AddSwaggerGen(
                     swagger => swagger.SwaggerDoc("v1", swaggerInfo));
 
+//========================================================            
             var app = webApplication.Build();
-
-            //CHECK : If working           
-            await ApplyMigrations(app.Services);
-
-            //CHECK : ExceptionHandlerMiddleware ??
+                      
+            //await ApplyMigrations(app.Services);
+            
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
-            // Configure the HTTP request pipeline.
+            // CHECK Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -54,6 +74,21 @@ namespace Soat.Antigaspi.Web
             }
 
             app.UseHttpsRedirection();
+
+            // CHECK : wwwroot by Default
+            //app.UseStaticFiles();
+
+            // CHECK: Send Proxy headers to CurrentRequest
+            app.UseForwardedHeaders( new ForwardedHeadersOptions
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
+
+            app.UseCors(); //Before UseAuthorization
+
+            // CHECK : 
+            //app.UseAuthorization();
+            //app.UseAuthentication();
 
             app.MapControllers(); //I find controllers
 

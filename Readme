@@ -14,6 +14,9 @@ ANTI-GASPI-ONION
 	QUESTIONS
 ====================================================
 **Request Pipeline
+	1.Cors & IIS configuration
+	2.Add to the application Pipeline
+	
 **HttpContextReques !!
 ** Request Handling Method
 ** https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
@@ -23,12 +26,14 @@ ANTI-GASPI-ONION
 ** Microsoft.AspNetCore.Mvc.ApplicationParts
 ** Microsoft.AspNetCore.Diagnostics = ExceptionHandlerMiddleware 
 
+**ContextLifeTime NOT align DI Scope
 
 * Microsoft.AspNetCore.Mvc.Core  => MVC? name of the pattern ?
 *internal
 *Lazy
 *Request
 *CancellationToken
+*ValueTask
 *?Injection to Controllers?
 
 ====================================================
@@ -38,7 +43,14 @@ https://code-maze.com/onion-architecture-in-aspnetcore/
 https://herbertograca.com/2017/09/21/onion-architecture/
 https://jeffreypalermo.com/2008/08/the-onion-architecture-part-3/
 
+https://code-maze.com/net-core-web-development-part2/
+
 *https://jeffreypalermo.com/2013/07/onion-architecture-for-distributed-systems-at-austin-code-camp-2013/
+
+https://code-maze.com/unit-testing-controllers-aspnetcore-moq/
+
+https://code-maze.com/migrations-and-seed-data-efcore/
+https://code-maze.com/global-error-handling-aspnetcore/
 
 **Volosoft: ABP
 
@@ -57,3 +69,9 @@ https://en.wikipedia.org/wiki/Inversion_of_control
 https://github.com/cstrahan/codecampserver
 
 ?? https://martinfowler.com/articles/injection.html
+
+====================================================
+LEARNs
+====================================================
+Extension: extends from .Net types. 
+			Inside an static class, use this on first param
