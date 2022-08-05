@@ -16,6 +16,8 @@ ANTI-GASPI-ONION
 **Request Pipeline
 **HttpContextReques !!
 ** Request Handling Method
+** https://docs.microsoft.com/en-us/dotnet/core/extensions/dependency-injection
+** IHost : https://docs.microsoft.com/en-us/dotnet/api/microsoft.extensions.hosting.ihost?view=dotnet-plat-ext-6.0 , DI
 ** Program , Startup
 ** Singleton, scoped, Transient (Session, Cache, )
 ** Microsoft.AspNetCore.Mvc.ApplicationParts

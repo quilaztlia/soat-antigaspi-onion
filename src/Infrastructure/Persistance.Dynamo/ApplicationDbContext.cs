@@ -3,7 +3,7 @@
 
 namespace Persistence.Dynamo
 {
-    public class ApplicationDbContext //: DbContext
+    public class ApplicationDbContext : DbContext
     {
         /*
         public RepositoryDbContext(DbContextOptions contextOptions)
@@ -21,4 +21,5 @@ namespace Persistence.Dynamo
         }        
         */
     }
+
 }

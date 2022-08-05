@@ -1,6 +1,7 @@
 ﻿using Domain.Entities;
 using Domain.Repository.Abstractions;
 using Microsoft.EntityFrameworkCore;
+using Persistence.Tsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;

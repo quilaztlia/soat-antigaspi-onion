@@ -1,4 +1,5 @@
 ﻿using Domain.Repository.Abstractions;
+using Persistence.Tsql;
 
 namespace Persistence.Repositories
 {

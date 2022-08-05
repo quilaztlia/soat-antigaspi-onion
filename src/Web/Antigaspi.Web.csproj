@@ -7,7 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AWSSDK.DynamoDBv2" Version="3.7.3.64" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.7" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="6.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
@@ -16,7 +21,7 @@
     <ProjectReference Include="..\Core\Services.Abstractions\Services.Abstractions.csproj" />
     <ProjectReference Include="..\Core\Services\Services.csproj" />
     <ProjectReference Include="..\Infrastructure\LoggerService\LoggerService.csproj" />
-    <ProjectReference Include="..\Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj" />
+    <ProjectReference Include="..\Infrastructure\Persistence\Persistence.Tsql.csproj" />
     <ProjectReference Include="..\Infrastructure\Presentation\Presentation.Rest.csproj" />
   </ItemGroup>
 
