@@ -18,6 +18,8 @@ namespace Soat.Antigaspi.Web
             var webApplication = WebApplication.CreateBuilder(args);
 
             // Add services to the container
+            webApplication.Services.ConfigureLogger(webApplication.Configuration);
+
             webApplication.Services.AddTransient<CustomExceptionHandlerMiddleware>();
 
             webApplication.Services.AddControllers()
@@ -33,19 +35,13 @@ namespace Soat.Antigaspi.Web
                     builder.UseSqlServer(connectionString);
                 });
             //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
-            
+
             // CHECK : Cors ExtensionMethod
-            webApplication.Services.AddCors(
-                options => 
-                {
-                    options.AddPolicy("CorsPolicy",
-                            webAppBuilde => webAppBuilde.AllowAnyOrigin()
-                                .AllowAnyMethod()
-                                .AllowAnyHeader());
-                });
+            webApplication.Services.ConfigureCors();            
 
             // IISConfig in ExtensionMethod
             webApplication.Services.ConfigureIISIntegration();
+            
 
             // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             webApplication.Services.AddEndpointsApiExplorer();
@@ -85,6 +81,8 @@ namespace Soat.Antigaspi.Web
             });
 
             app.UseCors(); //Before UseAuthorization
+
+            // app.UseSerilog();
 
             // CHECK : 
             //app.UseAuthorization();

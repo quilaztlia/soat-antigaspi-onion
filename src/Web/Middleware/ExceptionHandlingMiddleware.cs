@@ -1,13 +1,15 @@
 ﻿using Domain.Exceptions;
+using LoggerService.Abstractions;
 using Newtonsoft.Json;
 
 namespace Antigaspi.Web.Middleware
 {
     internal sealed class CustomExceptionHandlerMiddleware : IMiddleware
     {
-        private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
+        //private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
+        private readonly ILoggerManager _logger;
 
-        public CustomExceptionHandlerMiddleware(ILogger<CustomExceptionHandlerMiddleware> logger) =>
+        public CustomExceptionHandlerMiddleware(ILoggerManager logger) =>
             _logger = logger;
 
         public async Task InvokeAsync(HttpContext httpContext, RequestDelegate next)

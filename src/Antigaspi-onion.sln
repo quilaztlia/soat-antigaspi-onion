@@ -25,7 +25,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Communication", "Infrastruc
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistance.Dynamo", "Infrastructure\Persistance.Dynamo\Persistance.Dynamo.csproj", "{FC459942-2A0C-490C-8F27-B7C2352E7BF5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LoggerService", "Infrastructure\LoggerService\LoggerService.csproj", "{E4855A7F-7AC3-42FA-AF18-382B1AC24D68}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LoggerService", "Infrastructure\LoggerService\LoggerService.csproj", "{E4855A7F-7AC3-42FA-AF18-382B1AC24D68}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
