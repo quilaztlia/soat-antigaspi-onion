@@ -2,6 +2,7 @@
 using Domain.Repository.Abstractions;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Tsql;
+using Persistence.Tsql.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +11,13 @@ using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-    internal sealed class OfferRepository : IOfferRepository
+    internal sealed class OffersRepository : RepositoryBase<Offer>, IOffersRepository
     {
         private readonly ApplicationDbContext _appDbContext;
 
         //CHECK: Not an Interface ?
-        public OfferRepository(ApplicationDbContext dbContext)
+        public OffersRepository(ApplicationDbContext dbContext)
+            : base(dbContext)
         {
             _appDbContext = dbContext;
         }

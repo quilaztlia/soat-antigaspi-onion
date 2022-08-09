@@ -1,10 +1,43 @@
 ﻿using Domain.Repository.Abstractions;
+using Persistence.Repositories;
 
 namespace Persistence.Tsql
 {
     public sealed class RepositoryManager : IRepositoryManager
     {
-        public IOfferRepository OfferRepository { set => throw new NotImplementedException(); }
-        public IContactRepository ContacRepository { set => throw new NotImplementedException(); }
+        private readonly ApplicationDbContext _appDbContext;
+
+        private IOffersRepository _offerRepository;
+        private IContactsRepository _contactRepository;
+
+        public RepositoryManager(ApplicationDbContext appDbContext)
+        {
+            _appDbContext = appDbContext;
+        }
+
+        public IOffersRepository OfferRepository
+        {
+            get
+            {
+                if (_offerRepository == null)
+                    _offerRepository = new OffersRepository(_appDbContext);
+                return _offerRepository;
+            }            
+        }
+
+        public IContactsRepository ContacRepository
+        {
+            get
+            {
+                if (_contactRepository == null)
+                    _contactRepository = new ContactsRepository(_appDbContext);
+                return _contactRepository;
+            }            
+        }
+
+        public void Save()
+        {
+            _appDbContext.SaveChanges();
+        }
     }
 }

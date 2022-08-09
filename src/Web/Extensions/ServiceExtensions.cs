@@ -1,5 +1,8 @@
-﻿using LoggerService;
+﻿using Domain.Repository.Abstractions;
+using LoggerService;
 using LoggerService.Abstractions;
+using Microsoft.EntityFrameworkCore;
+using Persistence.Tsql;
 
 namespace Antigaspi.Web.Extensions
 {
@@ -28,6 +31,20 @@ namespace Antigaspi.Web.Extensions
         public static void ConfigureLogger(this IServiceCollection appServices, ConfigurationManager configuration)
         {
             appServices.AddSingleton<ILoggerManager, LoggerManager>();
+        }
+    
+        public static void ConfigureSqlContext(this IServiceCollection appServices, IConfiguration configuration)
+        {
+            appServices.AddDbContextPool<ApplicationDbContext>(
+                builder => {
+                    var connectionString = configuration.GetConnectionString("AntigaspiDB");
+                    builder.UseSqlServer(connectionString);
+                });
+        }
+
+        public static void ConfigureRepositoryManager(this IServiceCollection appServices)
+        {
+            appServices.AddScoped<IRepositoryManager, RepositoryManager>();         
         }
     }
 }

@@ -2,7 +2,9 @@
 {
     public interface IRepositoryManager
     {
-        public IOfferRepository OfferRepository { set; }
-        public IContactRepository ContacRepository { set; }
+        public IOffersRepository OfferRepository { get; }
+        public IContactsRepository ContacRepository { get; }
+
+        void Save();
     }
 }

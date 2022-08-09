@@ -3,7 +3,7 @@
 namespace Presentation.Rest
 {
     [ApiController]
-    //[Route("api/[]")]
+    //[Route("api/[controller]")] //Convention-based routing
     [Route("api/offers")]
     public class OffersController : ControllerBase
     {

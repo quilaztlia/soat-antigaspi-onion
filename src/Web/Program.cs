@@ -1,10 +1,8 @@
 using Antigaspi.Web.Extensions;
 using Antigaspi.Web.Middleware;
-using Domain.Repository.Abstractions;
 using Domain.Services;
 using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
 using Microsoft.OpenApi.Models;
 using Persistence.Tsql;
 using Services.Abstractions;
@@ -27,13 +25,9 @@ namespace Soat.Antigaspi.Web
 
             webApplication.Services.AddScoped<IServiceManager, ServiceManager>();
 
-            webApplication.Services.AddScoped<IRepositoryManager, RepositoryManager>();
+            webApplication.Services.ConfigureRepositoryManager();
 
-            webApplication.Services.AddDbContextPool<ApplicationDbContext>(
-                builder => {
-                    var connectionString = webApplication.Configuration.GetConnectionString("AntigaspiDB");
-                    builder.UseSqlServer(connectionString);
-                });
+            webApplication.Services.ConfigureSqlContext(webApplication.Configuration);
             //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
 
             // CHECK : Cors ExtensionMethod
