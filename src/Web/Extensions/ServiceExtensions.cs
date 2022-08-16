@@ -30,7 +30,7 @@ namespace Antigaspi.Web.Extensions
 
         public static void ConfigureLogger(this IServiceCollection appServices, ConfigurationManager configuration)
         {
-            appServices.AddSingleton<ILoggerManager, LoggerManager>();
+            appServices.AddSingleton<ICustomLoggerManager, CustomLoggerManager>();
         }
     
         public static void ConfigureSqlContext(this IServiceCollection appServices, IConfiguration configuration)

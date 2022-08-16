@@ -35,9 +35,14 @@ D:\Repos\2022\.MyPoCs\MvpIntegrationTest
 *internal
 *Lazy
 *Request
+*whdfrd
 *CancellationToken
 *ValueTask
+*public string Title { get; set; } = default!;
+*Expression<Func<
+
 *?Injection to Controllers?
+
 
 ====================================================
 	LINKS

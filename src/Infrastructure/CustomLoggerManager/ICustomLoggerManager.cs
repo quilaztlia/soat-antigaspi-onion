@@ -1,6 +1,6 @@
 ﻿namespace LoggerService.Abstractions
 {
-    public interface ILoggerManager
+    public interface ICustomLoggerManager
     {
         void LogInfo(string message);
         void LogWarn(string message);

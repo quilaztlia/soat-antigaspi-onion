@@ -31,7 +31,8 @@ namespace Persistence.Tsql.Repositories
 
         public IQueryable<T> FindByCondition(Expression<Func<T, bool>> expression)
         {
-          return  _repositoryContext.Set<T>().Where(expression).AsNoTracking();
+          return  _repositoryContext.Set<T>()
+                .Where(expression).AsNoTracking();
         }
 
         public void Update(T entity)

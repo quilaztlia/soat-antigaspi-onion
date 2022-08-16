@@ -6,5 +6,15 @@ DI:		https://code-maze.com/dependency-injection-aspnet/
 SOLID: 	https://code-maze.com/solid-principles/
 		https://code-maze.com/dependency-inversion-principle/
 		
-CORS:	https://code-maze.com/enabling-cors-in-asp-net-core/		
+CORS:	https://code-maze.com/enabling-cors-in-asp-net-core/
+
+		https://code-maze.com/csharp-top-level-statements/
+			
+EF: 	https://code-maze.com/getting-started-with-efcore/		
+NoSql:	https://code-maze.com/configuring-nonrelational-properties/
+
+	
 RESULT: ??		
+https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/concepts/linq/how-to-add-custom-methods-for-linq-queries
+
+Repo: https://github.com/MSaniee/Clean-Architecture-MS2-Template

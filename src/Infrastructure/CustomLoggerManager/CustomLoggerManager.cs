@@ -5,11 +5,11 @@ using Serilog;
 
 namespace LoggerService
 {    
-    public class LoggerManager : ILoggerManager
+    public class CustomLoggerManager : ICustomLoggerManager
     {
         private static ILogger _logger;
 
-        public LoggerManager(IConfiguration configuration)
+        public CustomLoggerManager(IConfiguration configuration)
         {
              _logger = new LoggerConfiguration()
             .ReadFrom.Configuration(configuration)

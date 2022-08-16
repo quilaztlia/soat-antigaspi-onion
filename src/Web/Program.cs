@@ -16,6 +16,8 @@ namespace Soat.Antigaspi.Web
             var webApplication = WebApplication.CreateBuilder(args);
 
             // Add services to the container
+            //webApplication.Services.AddAutoMapper(typeof(Program));
+
             webApplication.Services.ConfigureLogger(webApplication.Configuration);
 
             webApplication.Services.AddTransient<CustomExceptionHandlerMiddleware>();

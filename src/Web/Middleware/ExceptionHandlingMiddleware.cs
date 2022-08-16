@@ -7,9 +7,9 @@ namespace Antigaspi.Web.Middleware
     internal sealed class CustomExceptionHandlerMiddleware : IMiddleware
     {
         //private readonly ILogger<CustomExceptionHandlerMiddleware> _logger;
-        private readonly ILoggerManager _logger;
+        private readonly ICustomLoggerManager _logger;
 
-        public CustomExceptionHandlerMiddleware(ILoggerManager logger) =>
+        public CustomExceptionHandlerMiddleware(ICustomLoggerManager logger) =>
             _logger = logger;
 
         public async Task InvokeAsync(HttpContext httpContext, RequestDelegate next)

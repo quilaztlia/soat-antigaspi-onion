@@ -8,7 +8,13 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Contact> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable(nameof(Contact), "antigaspi");
+
+            builder.HasKey(contact => contact.Id);
+
+            builder.Property(contact => contact.Id).ValueGeneratedOnAdd();
+
+            builder.Property(contact => contact.CreationDatetime).ValueGeneratedOnAdd();
         }
     }
 

@@ -8,7 +8,9 @@ namespace Persistence.Configurations
     {
         public void Configure(EntityTypeBuilder<Offer> builder)
         {
-            throw new NotImplementedException();
+            builder.ToTable(nameof(Offer), "antigaspi");
+
+            builder.HasKey(offer => offer.Id);
         }
     }
 
