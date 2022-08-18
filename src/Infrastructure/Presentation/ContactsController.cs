@@ -38,7 +38,13 @@ namespace Presentation.Rest
         [HttpGet("/{id}")]
         public IActionResult GetContact([FromQuery]int id)
         {
-            var contact = _serviceManager.ContactService.GetContact(id);
+            var contact = _serviceManager
+                .ContactService
+                .GetContact(id);
+
+            //NotFound without value => become null
+            if (contact.Id == 0)
+                return NotFound($"Contact {id} not found");
             
             return Ok(contact);
         }

@@ -9,7 +9,6 @@
         public string? Phone { get; set; }
         public string? Message { get; set; }        
         public Guid OfferId { get; set; }
-
         public DateTimeOffset CreationDatetime { get; init; } = DateTimeOffset.UtcNow;
     }
 }

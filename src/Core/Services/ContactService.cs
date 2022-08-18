@@ -29,12 +29,12 @@ namespace Domain.Services
         {
            var contact = _contactsRepository.GetById(idContact);
 
-            var contactDto = contact.Adapt<ContactDto>();
+            var contactDto = contact?.Adapt<ContactDto>();
 
-            return contactDto;
+            return contactDto != null ? contactDto : new ContactDto() ;
         }
-
-        Task<ContactDto> IContactService.GetContact(int idContact)
+       
+        public Task<ContactDto> GetContactAsync(int idContact)
         {
             throw new NotImplementedException();
         }
