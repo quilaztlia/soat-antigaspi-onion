@@ -14,8 +14,8 @@ public sealed class ServiceManager : IServiceManager
     {
         _repositoryManager = repositoryManager;
 
-        _lazyContactsService = new Lazy<ContactService>(() => new ContactService(repositoryManager));
-        _lazyOffersService = new Lazy<OfferService>(() => new OfferService(repositoryManager));
+        _lazyContactsService = new Lazy<ContactService>(() => new ContactService(_repositoryManager));
+        _lazyOffersService = new Lazy<OfferService>(() => new OfferService(_repositoryManager));
     }
 
     public IOfferService OfferService => _lazyOffersService.Value;

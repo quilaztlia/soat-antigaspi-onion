@@ -1,21 +1,26 @@
-﻿using Moq;
+﻿using ContactServer.Test.Mocks;
+using Domain.Services;
+using Moq;
+using PresentationRest.Test.Mocks;
 using Services.Abstractions;
 
 namespace ContactServer.Test.Mock
 {
     internal class MockServiceManager
     {
-        public static Mock<IServiceManager> GetMock()
+        public static IServiceManager GetMock()
         {
-            var mock = new Mock<IServiceManager>();
+            var repositoryManager = MockRepositoryManager.GetMock();           
+            
+            var serviceManager = new ServiceManager(repositoryManager.Object);
 
-            mock.Setup(m => m.ContactService)
-                .Returns(() => new Mock<IContactService>().Object);
-
-            mock.Setup(m => m.OfferService)
-                .Returns(() => new Mock<IOfferService>().Object);
-
-            return mock;
+            //CHECK: Dont understand this !
+            //var contactServiceMock = MockIContactService.GetMock();
+            //var mock = new Mock<IServiceManager>();
+            //mock.Setup(m => m.ContactService)
+            //    .Returns(() => contactServiceMock.Object);
+        
+            return serviceManager;
         }
     }
 }

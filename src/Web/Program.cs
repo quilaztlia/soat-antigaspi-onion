@@ -32,14 +32,14 @@ namespace Soat.Antigaspi.Web
             webApplication.Services.ConfigureSqlContext(webApplication.Configuration);
             //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
 
-            // CHECK : Cors ExtensionMethod
+            //CHECK : Cors ExtensionMethod
             webApplication.Services.ConfigureCors();            
 
-            // IISConfig in ExtensionMethod
+            //IISConfig in ExtensionMethod
             webApplication.Services.ConfigureIISIntegration();
             
 
-            // Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+            //Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             webApplication.Services.AddEndpointsApiExplorer();
 
             var swaggerDocName = "Antigaspi.Web";
@@ -58,7 +58,7 @@ namespace Soat.Antigaspi.Web
             
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 
-            // CHECK Configure the HTTP request pipeline.
+            //CHECK Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -67,10 +67,10 @@ namespace Soat.Antigaspi.Web
 
             app.UseHttpsRedirection();
 
-            // CHECK : wwwroot by Default
+            //CHECK : wwwroot by Default
             //app.UseStaticFiles();
 
-            // CHECK: Send Proxy headers to CurrentRequest
+            //CHECK: Send Proxy headers to CurrentRequest
             app.UseForwardedHeaders( new ForwardedHeadersOptions
             {
                 ForwardedHeaders = ForwardedHeaders.All
@@ -78,9 +78,9 @@ namespace Soat.Antigaspi.Web
 
             app.UseCors(); //Before UseAuthorization
 
-            // app.UseSerilog();
+            //app.UseSerilog();
 
-            // CHECK : 
+            //CHECK : 
             //app.UseAuthorization();
             //app.UseAuthentication();
 
@@ -89,7 +89,7 @@ namespace Soat.Antigaspi.Web
             app.Run();
         }
 
-        // CHECK: EFTools, EF.SqlServer
+        //CHECK: EFTools, EF.SqlServer
         static async Task ApplyMigrations(IServiceProvider services)
         {
             using var scope = services.CreateScope();

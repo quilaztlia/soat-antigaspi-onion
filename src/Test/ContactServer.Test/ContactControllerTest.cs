@@ -1,24 +1,30 @@
+using ContactServer.Test.Mock;
+using ContactServer.Test.Mocks;
 using Contracts;
 using Domain.Entities;
 using Domain.Repository.Abstractions;
 using Domain.Services;
 using LoggerService;
+using LoggerService.Abstractions;
 using Mapster;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Moq;
 using Presentation.Rest;
+using PresentationRest.Test.Mocks;
 
 namespace ContactServer.Test
 {
     public class ContactControllerTest
     {
+        ICustomLoggerManager _logger = MockTools.GetLogger();
+
         [Fact]
         public void GetAll_Should_ReturnOkAndAll2Contacts_When_2ContactsExists()
         {
             var all2ContactsMocked = new List<Contact>()
-            {
+           {
                 new Contact
                 {
                      Id = 1,
@@ -30,7 +36,7 @@ namespace ContactServer.Test
                      OfferId = new Guid(),
                      Message =  "I am contact 1"
                 },
-                 new Contact
+                new Contact
                 {
                      Id=2,
                      CreationDatetime = DateTime.Now,
@@ -43,18 +49,11 @@ namespace ContactServer.Test
                 },
             };
 
-            var contactRepositoryMocked = new Mock<IContactsRepository>();
-            contactRepositoryMocked.Setup(r => r.GetAllContacts())
-                .Returns(all2ContactsMocked);
-
-            var repositoryManagerMocked = new Mock<IRepositoryManager>();
-            repositoryManagerMocked.Setup(r => r.ContacRepository)
-                .Returns(() => contactRepositoryMocked.Object);
-
-            var serviceManager = new ServiceManager(repositoryManagerMocked.Object);
-            var logger = new CustomLoggerManager(new ConfigurationManager()); //Class:IConfiguration
-
-            var contactController = new ContactsController(logger, serviceManager);
+            var contactRepository = MockIContactsRepository.GetMock(all2ContactsMocked);           
+            var repositoryManager = MockRepositoryManager.GetMock(contactRepository);               
+            var serviceManager =  new ServiceManager(repositoryManager.Object);
+            
+            var contactController = new ContactsController(_logger, serviceManager);
 
             //Act
             var result = contactController.GetAllContacts() as ObjectResult;
@@ -64,7 +63,6 @@ namespace ContactServer.Test
             Assert.IsAssignableFrom<IEnumerable<ContactDto>>(result?.Value);
             Assert.NotNull(result?.Value as IEnumerable<ContactDto>);
             Assert.Equal(all2ContactsMocked.Adapt<IEnumerable<ContactDto>>(), result?.Value as IEnumerable<ContactDto>);
-            //Assert.Equal(all2ContactsMocked.First().FirstName, contactResult.First().FirstName);
         }
 
         [Fact]
@@ -80,7 +78,7 @@ namespace ContactServer.Test
             var repositoryManager = new Mock<IRepositoryManager>();
             repositoryManager.Setup(rm => rm.ContacRepository)
                 .Returns(() => contactRepository.Object);
-            
+
             var serviceManager = new ServiceManager(repositoryManager.Object);
             var logger = new CustomLoggerManager(new ConfigurationManager());
 
@@ -132,13 +130,13 @@ namespace ContactServer.Test
             var repositoryManager = new Mock<IRepositoryManager>();
             repositoryManager.Setup(rm => rm.ContacRepository)
                 .Returns(() => contactRepository.Object);
-            
+
             var serviceManager = new ServiceManager(repositoryManager.Object);
             var logger = new CustomLoggerManager(new ConfigurationManager());
 
             var idContact = 1;
             var contactController = new ContactsController(logger, serviceManager);
-            
+
             //Act
             var contactResult = contactController.GetContact(idContact) as ObjectResult;
 
@@ -160,7 +158,7 @@ namespace ContactServer.Test
             contactRepository.Setup(r => r.GetById(It.IsAny<int>()))
                 .Returns((int idContact) => contacts.FirstOrDefault(c => c.Id == idContact));
 
-            var repositoryManager = new Mock<IRepositoryManager>();            
+            var repositoryManager = new Mock<IRepositoryManager>();
             repositoryManager.Setup(rm => rm.ContacRepository)
                 .Returns(contactRepository.Object);
 
