@@ -11,7 +11,7 @@ namespace Soat.Antigaspi.Web
 {
     public class Program
     {
-        public static async Task Main(string[] args)
+        public static void/*async Task*/ Main(string[] args)
         {
             var webApplication = WebApplication.CreateBuilder(args);
 

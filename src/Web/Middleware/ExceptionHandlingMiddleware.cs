@@ -42,7 +42,7 @@ namespace Antigaspi.Web.Middleware
             var httpResponse = new
             {
                 error = deeperException?.Message,
-                stackTrace = deeperException.StackTrace
+                stackTrace = deeperException?.StackTrace
             };
 
             await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(httpResponse));

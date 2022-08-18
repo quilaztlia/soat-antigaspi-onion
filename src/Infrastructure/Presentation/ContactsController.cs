@@ -17,15 +17,16 @@ namespace Presentation.Rest
         }
 
         [HttpGet("/healthCheck")]
-        //CHECK;  Task<IActionResult> 
-        public async Task<ActionResult> HealtCheck()
+        //CHECK: Task<IActionResult> 
+        public IActionResult HealtCheck() 
         {
-            _logger.LogInfo("HealtCheck-1");
-            return Ok("HealtCheck");
+            _logger.LogInfo("Log: HealtCheck");
+
+            return Ok($"HealtCheck {this.GetType().Name}");
         }
 
         [HttpGet("/all")]
-        public /*async*/ IActionResult GetAllContacts()
+        public IActionResult GetAllContacts()
         {
             var contacts = _serviceManager
                 .ContactService

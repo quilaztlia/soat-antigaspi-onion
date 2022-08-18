@@ -25,7 +25,7 @@ namespace Domain.Services
             return contactsDto;
         }
 
-        public async Task<ContactDto> GetContact(int idContact)
+        public ContactDto GetContact(int idContact)
         {
            var contact = _contactsRepository.GetById(idContact);
 
@@ -34,5 +34,9 @@ namespace Domain.Services
             return contactDto;
         }
 
+        Task<ContactDto> IContactService.GetContact(int idContact)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

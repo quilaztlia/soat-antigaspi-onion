@@ -13,14 +13,14 @@ namespace Persistence.Tsql
         public RepositoryManager(ApplicationDbContext appDbContext)
         {
             _appDbContext = appDbContext;
+            _offerRepository = new OffersRepository(_appDbContext);
+            _contactRepository = new ContactsRepository(_appDbContext);
         }
 
         public IOffersRepository OfferRepository
         {
             get
             {
-                if (_offerRepository == null)
-                    _offerRepository = new OffersRepository(_appDbContext);
                 return _offerRepository;
             }            
         }
@@ -29,9 +29,7 @@ namespace Persistence.Tsql
         {
             get
             {
-                if (_contactRepository == null)
-                    _contactRepository = new ContactsRepository(_appDbContext);
-                return _contactRepository;
+               return _contactRepository;
             }            
         }
 

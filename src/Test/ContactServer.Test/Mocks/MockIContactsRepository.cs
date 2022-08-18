@@ -35,7 +35,7 @@ namespace ContactServer.Test.Mocks
                 .Returns(() => contacts);
 
             mock.Setup(m => m.GetById(It.IsAny<int>()))
-                .Returns((int id) => contacts.FirstOrDefault(c => c.Id == id)); 
+                .Returns((int id) => contacts.FirstOrDefault(c => c?.Id == id)); 
 
 
             return mock;

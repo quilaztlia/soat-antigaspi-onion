@@ -10,9 +10,9 @@ namespace Persistence.Tsql
         {
         }
 
-        public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; } = default!;
 
-        public DbSet<Offer> Offers { get; set; }
+        public DbSet<Offer> Offers { get; set; } = default;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
