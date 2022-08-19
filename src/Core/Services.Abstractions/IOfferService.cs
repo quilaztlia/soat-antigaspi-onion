@@ -4,10 +4,14 @@ namespace Services.Abstractions
 {
     public interface IOfferService
     {
-        Task<OfferDto> GetOffer(Guid offerID);
-
-        Task<IReadOnlyCollection<OfferDto>> GetAllOffers();
-        
         OfferDto CreateOffer(OfferCreationRequest offer);
+        IEnumerable<OfferDto> GetAllOffers();
+        OfferDto GetOfferById(Guid id);
+
+        Task<OfferDto> CreateOfferAsync(OfferCreationRequest offer);
+        Task<OfferDto> GetOfferByIdAsync(Guid offerID);
+        Task<IReadOnlyCollection<OfferDto>> GetAllOffersAsync();
+        
+        
     }
 }

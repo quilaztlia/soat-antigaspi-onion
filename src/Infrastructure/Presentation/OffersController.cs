@@ -19,7 +19,7 @@ namespace Presentation.Rest
             _serviceManager = serviceManager;
         }
 
-        [HttpGet]
+        [HttpGet("healthCheck")]
         public ActionResult HealtCheck()
         {
             return Ok("HealtCheck"); 
@@ -49,6 +49,28 @@ namespace Presentation.Rest
             var created = CreatedAtRoute("OfferById", offerCreated);
             
             return created;
+        }
+
+        [HttpGet("{id}", Name ="GetOfferById")]
+        public IActionResult GetOfferById([FromHeader]Guid id)
+        {
+            var offer = _serviceManager
+                            .OfferService
+                            .GetOfferById(id);
+            if (offer.Id != id)            
+                return NotFound($"Offer id: {id} not found");
+            
+            return Ok(offer);
+        }
+
+        [HttpGet("/all", Name = "all")]
+        public IActionResult GetAllOffers()
+        {
+            var offers = _serviceManager
+                .OfferService
+                .GetAllOffers();
+
+            return Ok(offers);
         }
     }
 }

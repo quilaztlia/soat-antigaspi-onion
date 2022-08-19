@@ -26,7 +26,8 @@ namespace Persistence.Repositories
 
         public Offer? GetOfferById(Guid idOffer)
         {
-            return FindByCondition(q => q.Id == idOffer)
+            //CHECK: == Or .Equals ??
+            return FindByCondition(offer => offer.Id == idOffer)
                 .FirstOrDefault();
         }
 

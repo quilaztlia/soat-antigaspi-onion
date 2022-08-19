@@ -16,8 +16,6 @@ namespace Soat.Antigaspi.Web
             var webApplication = WebApplication.CreateBuilder(args);
 
             // Add services to the container
-            //webApplication.Services.AddAutoMapper(typeof(Program));
-
             webApplication.Services.ConfigureLogger(webApplication.Configuration);
 
             webApplication.Services.AddTransient<CustomExceptionHandlerMiddleware>();
@@ -29,15 +27,13 @@ namespace Soat.Antigaspi.Web
 
             webApplication.Services.ConfigureRepositoryManager();
 
-            webApplication.Services.ConfigureSqlContext(webApplication.Configuration);
-            //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
+            webApplication.Services.ConfigureSqlContext(webApplication.Configuration);                        
 
             //CHECK : Cors ExtensionMethod
             webApplication.Services.ConfigureCors();            
 
             //IISConfig in ExtensionMethod
-            webApplication.Services.ConfigureIISIntegration();
-            
+            webApplication.Services.ConfigureIISIntegration();            
 
             //Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             webApplication.Services.AddEndpointsApiExplorer();
@@ -51,7 +47,9 @@ namespace Soat.Antigaspi.Web
             webApplication.Services.AddSwaggerGen(
                     swagger => swagger.SwaggerDoc("v1", swaggerInfo));
 
-//========================================================            
+            //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
+
+            //========================================================            
             var app = webApplication.Build();
                       
             //await ApplyMigrations(app.Services);
@@ -76,11 +74,10 @@ namespace Soat.Antigaspi.Web
                 ForwardedHeaders = ForwardedHeaders.All
             });
 
-            app.UseCors(); //Before UseAuthorization
-
-            //app.UseSerilog();
+            app.UseCors(); //Before UseAuthorization            
 
             //CHECK : 
+            //app.UseSerilog();
             //app.UseAuthorization();
             //app.UseAuthentication();
 

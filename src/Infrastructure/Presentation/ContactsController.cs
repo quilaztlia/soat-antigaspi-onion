@@ -16,7 +16,7 @@ namespace Presentation.Rest
             _serviceManager = serviceManager;
         }
 
-        [HttpGet("/healthCheck")]
+        [HttpGet("healthCheck")]
         //CHECK: Task<IActionResult> 
         public IActionResult HealtCheck() 
         {
@@ -25,7 +25,7 @@ namespace Presentation.Rest
             return Ok($"HealtCheck {this.GetType().Name}");
         }
 
-        [HttpGet("/all")]
+        [HttpGet("all")]
         public IActionResult GetAllContacts()
         {
             var contacts = _serviceManager
