@@ -1,5 +1,7 @@
 ﻿using Contracts;
+using Domain.Entities;
 using Domain.Repository.Abstractions;
+using Mapster;
 using Services.Abstractions;
 
 namespace Domain.Services
@@ -8,10 +10,22 @@ namespace Domain.Services
     public sealed class OfferService : IOfferService
     {
         private readonly IOffersRepository _offersRepository;
+        private readonly IRepositoryManager _repositoryManager;
 
         public OfferService(IRepositoryManager repositoryManager)
         {
+            _repositoryManager = repositoryManager;
             _offersRepository = repositoryManager.OfferRepository;
+        }
+
+        public OfferDto CreateOffer(OfferCreationRequest newOffer)
+        {
+            var offer = newOffer.Adapt<Offer>();
+            
+            _offersRepository.Create(offer);
+            _repositoryManager.Save();
+
+            return offer.Adapt<OfferDto>();            
         }
 
         public Task<IReadOnlyCollection<OfferDto>> GetAllOffers()

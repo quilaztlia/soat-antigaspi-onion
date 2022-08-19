@@ -47,6 +47,6 @@ namespace Presentation.Rest
                 return NotFound($"Contact {id} not found");
             
             return Ok(contact);
-        }
+        }        
     }
 }

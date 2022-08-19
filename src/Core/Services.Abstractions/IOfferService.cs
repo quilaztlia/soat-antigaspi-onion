@@ -7,5 +7,7 @@ namespace Services.Abstractions
         Task<OfferDto> GetOffer(Guid offerID);
 
         Task<IReadOnlyCollection<OfferDto>> GetAllOffers();
+        
+        OfferDto CreateOffer(OfferCreationRequest offer);
     }
 }

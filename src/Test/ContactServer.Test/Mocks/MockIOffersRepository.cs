@@ -1,11 +1,6 @@
 ﻿using Domain.Entities;
 using Domain.Repository.Abstractions;
 using Moq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ContactServer.Test.Mocks
 {
@@ -27,6 +22,18 @@ namespace ContactServer.Test.Mocks
                 }
             };           
 
+            return mock;
+        }
+
+        //CHECK: Has sens to mock? Bcs I have no return
+        //      So how to check if well added (Id = NotFilled)
+        public static Mock<IOffersRepository> GetMock(List<Offer> offers)
+        {
+            var mock = new Mock<IOffersRepository>();
+
+            mock.Setup(r => r.CreateOffer(It.IsAny<Offer>()));
+                //.Returns((Offer newOffer) => offers.Add(newOffer));     
+            
             return mock;
         }
     }

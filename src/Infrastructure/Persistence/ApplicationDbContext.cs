@@ -12,6 +12,7 @@ namespace Persistence.Tsql
 
         public DbSet<Contact> Contacts { get; set; } = default!;
 
+        //CHECK: default express to Observe Behaviour
         public DbSet<Offer> Offers { get; set; } = default;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)

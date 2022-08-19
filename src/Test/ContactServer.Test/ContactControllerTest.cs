@@ -50,7 +50,7 @@ namespace ContactServer.Test
             };
 
             var contactRepository = MockIContactsRepository.GetMock(all2ContactsMocked);           
-            var repositoryManager = MockRepositoryManager.GetMock(contactRepository);               
+            var repositoryManager = MockRepositoryManager.GetContactsMock(contactRepository);               
             var serviceManager =  new ServiceManager(repositoryManager.Object);
             
             var contactController = new ContactsController(_logger, serviceManager);

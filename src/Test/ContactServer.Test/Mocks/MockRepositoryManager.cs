@@ -5,7 +5,7 @@ namespace ContactServer.Test.Mocks
 {
     internal class MockRepositoryManager
     {
-        public static Mock<IRepositoryManager> GetMock(Mock<IContactsRepository> contactsRepository)
+        public static Mock<IRepositoryManager> GetContactsMock(Mock<IContactsRepository> contactsRepository)
         {
             var mock = new Mock<IRepositoryManager>();
           
@@ -18,7 +18,7 @@ namespace ContactServer.Test.Mocks
             return mock;
         }
 
-        public static Mock<IRepositoryManager> GetMock(Mock<IOffersRepository> offersRepository)
+        public static Mock<IRepositoryManager> GetOffersMock(Mock<IOffersRepository> offersRepository)
         {
             var mock = new Mock<IRepositoryManager>();
 

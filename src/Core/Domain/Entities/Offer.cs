@@ -12,6 +12,5 @@
         public OfferStatus Status { get; set; }
         public DateTimeOffset? Availability { get; set; }
         public DateTimeOffset? Expiration { get; set; }
-
     }
 }

@@ -19,6 +19,11 @@ namespace Persistence.Tsql.Repositories
             _repositoryContext.Set<T>().Add(entity);
         }
 
+        public void Update(T entity)
+        {
+            _repositoryContext.Set<T>().Update(entity);
+        }
+
         public void Delete(T entity)
         {
             _repositoryContext.Set<T>().Remove(entity);
@@ -33,11 +38,6 @@ namespace Persistence.Tsql.Repositories
         {
           return  _repositoryContext.Set<T>()
                 .Where(expression).AsNoTracking();
-        }
-
-        public void Update(T entity)
-        {
-            _repositoryContext.Set<T>().Update(entity);
         }
     }
 }
