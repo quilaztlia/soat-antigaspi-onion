@@ -35,11 +35,9 @@ namespace Antigaspi.Web.Extensions
     
         public static void ConfigureSqlContext(this IServiceCollection appServices, IConfiguration configuration)
         {
-            appServices.AddDbContextPool<ApplicationDbContext>(
-                builder => {
-                    var connectionString = configuration.GetConnectionString("AntigaspiDB");
-                    builder.UseSqlServer(connectionString);
-                });
+            appServices.AddDbContext<ApplicationDbContext>(
+                options =>
+                    options.UseSqlServer(configuration.GetConnectionString("AntigaspiDB")));
         }
 
         public static void ConfigureRepositoryManager(this IServiceCollection appServices)

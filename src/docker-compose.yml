@@ -1,0 +1,26 @@
+version: '3.9'
+
+services:
+  antigaspi.web:
+    image: ${DOCKER_REGISTRY-}antigaspiweb
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 5000:80
+      - 5001:443
+    depends_on: 
+      - antigaspi.db
+
+  antigaspi.db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"            
+    container_name: antigaspido_db
+    environment:
+      - DB_NAME=antigaspi
+      - USER_NAME=antigaspiusr
+      - SA_PASSWORD=antigaspiPwd22*
+      - ACCEPT_EULA=Y
+    volumes:
+      - ./db:/var/lib/mssql/data
+    ports:
+      - 1450:1433

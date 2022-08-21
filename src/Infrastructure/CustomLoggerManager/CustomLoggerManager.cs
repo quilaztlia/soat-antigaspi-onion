@@ -7,7 +7,7 @@ namespace LoggerService
 {    
     public class CustomLoggerManager : ICustomLoggerManager
     {
-        private static ILogger _logger;
+        private static ILogger _logger = default!;
 
         public CustomLoggerManager(IConfiguration configuration)
         {

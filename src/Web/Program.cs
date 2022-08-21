@@ -11,9 +11,12 @@ namespace Soat.Antigaspi.Web
 {
     public class Program
     {
-        public static void/*async Task*/ Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var webApplication = WebApplication.CreateBuilder(args);
+            //CHECK: webApplication vs webHost ?? 
+            //var webHost = Host.CreateDefaultBuilder(args)
+            //    .ConfigureWebHostDefaults(webBuilder => webBuilder.use<Startup>());
 
             // Add services to the container
             webApplication.Services.ConfigureLogger(webApplication.Configuration);
@@ -47,12 +50,13 @@ namespace Soat.Antigaspi.Web
             webApplication.Services.AddSwaggerGen(
                     swagger => swagger.SwaggerDoc("v1", swaggerInfo));
 
+            //TODO
             //webApplication.Services.AddAWSService<IAmazonDynamoDB>();
 
             //========================================================            
             var app = webApplication.Build();
                       
-            //await ApplyMigrations(app.Services);
+            await ApplyMigrations(app.Services);
             
             app.UseMiddleware<CustomExceptionHandlerMiddleware>();
 

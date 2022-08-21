@@ -10,7 +10,7 @@
         public string Address { get; set; } = default!;
           
         public OfferStatus Status { get; set; }
-        public DateTimeOffset? Availability { get; set; }
-        public DateTimeOffset? Expiration { get; set; }
+        public DateTime? Availability { get; set; }
+        public DateTime? Expiration { get; set; }
     }
 }
